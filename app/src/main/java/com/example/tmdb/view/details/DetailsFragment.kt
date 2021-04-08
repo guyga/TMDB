@@ -44,6 +44,7 @@ class DetailsFragment : Fragment() {
 
     private fun openVideo(video: Video) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(video.getYouTubeVideoUrl()))
+        intent.addCategory(Intent.CATEGORY_BROWSABLE)
         startActivity(intent)
     }
 }
