@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="castMember"
+            type="com.example.tmdb.network.entities.CastMember" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/recycler_height"
+        android:layout_marginEnd="@dimen/spacing_small">
+
+        <ImageView
+            android:id="@+id/pic"
+            android:layout_width="@dimen/item_width_small"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:castMemberPicture="@{castMember.picturePath}"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/description"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pic"
+            app:castMemberName="@{castMember.name}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

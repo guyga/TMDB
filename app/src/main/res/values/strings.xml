@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TMDB</string>
+    <string name="title_now_playing">Movies Now Playing</string>
+    <string name="more">More</string>
+    <string name="title_popular_movies">Popular Movies</string>
+    <string name="title_top_rated_movies">Movies Top Rated</string>
+    <string name="error_loading_this_category_please_try_again_later">Error loading this category. Please try again later</string>
+    <string name="title_upcoming_movies">Upcoming Movies</string>
+    <string name="detail_budget">Budget: USD %d</string>
+    <string name="detail_release">Release: %s</string>
+    <string name="detail_runtime">Runtime: %d min</string>
+    <string name="detail_rating">Rating: %s</string>
+    <string name="detail_status">Status: %s</string>
+    <string name="overview">Overview</string>
+    <string name="videos">Videos</string>
+    <string name="casts">Casts</string>
+</resources>

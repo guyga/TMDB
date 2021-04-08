@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="video"
+            type="com.example.tmdb.network.entities.Video" />
+    </data>
+
+    <ImageView
+        android:layout_width="@dimen/item_width_big"
+        android:layout_height="@dimen/image_height"
+        android:layout_marginEnd="@dimen/spacing_default"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:scaleType="fitXY"
+        app:video="@{video.youtubeThumbnailPath}"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+</layout>

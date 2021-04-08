@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.tmdb.view.details.DetailsViewModel" />
+
+        <variable
+            name="movie"
+            type="com.example.tmdb.network.entities.Movie" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/spacing_default">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:detailsLayoutVisibility="@{viewModel._movieDetailsWrapperApiStatus}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="@dimen/item_width_small"
+                android:layout_height="@dimen/image_height"
+                android:scaleType="fitCenter"
+                app:detailsImage="@{movie.fullPosterPath}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:orientation="vertical"
+                android:weightSum="5"
+                app:layout_constraintBottom_toBottomOf="@id/image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toTopOf="@id/image">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/description"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    app:budget="@{viewModel._movieDetailsWrapper}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/description"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    app:release="@{viewModel._movieDetailsWrapper}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/description"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    app:runtime="@{viewModel._movieDetailsWrapper}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/description"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    app:rating="@{viewModel._movieDetailsWrapper}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/description"
+                    android:textStyle="bold"
+                    app:autoSizeTextType="uniform"
+                    app:status="@{viewModel._movieDetailsWrapper}" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separatorDetails"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:background="@color/orange_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image" />
+
+            <LinearLayout
+                android:id="@+id/layoutOverview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/separatorDetails">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/overview"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/description"
+                    app:overview="@{viewModel._movieDetailsWrapper}" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separatorOverview"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:background="@color/orange_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutOverview" />
+
+            <LinearLayout
+                android:id="@+id/layoutVideos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/separatorOverview">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/videos"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/videosList"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recycler_height"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:spanCount="1"
+                    app:videos="@{viewModel._movieDetailsWrapper}"
+                    tools:itemCount="16"
+                    tools:listitem="@layout/item_video" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/separatorVideos"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:background="@color/orange_secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutVideos" />
+
+            <LinearLayout
+                android:id="@+id/layoutCast"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/separatorVideos">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/casts"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/title"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/castList"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recycler_height"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:orientation="horizontal"
+                    app:cast="@{viewModel._movieDetailsWrapper}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:spanCount="1"
+                    tools:itemCount="16"
+                    tools:listitem="@layout/item_cast_member" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_loading_this_category_please_try_again_later"
+            android:textColor="@color/white"
+            android:textSize="@dimen/description"
+            android:visibility="gone"
+            app:detailsError="@{viewModel._movieDetailsWrapperApiStatus}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:detailsLoadingStatus="@{viewModel._movieDetailsWrapperApiStatus}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
